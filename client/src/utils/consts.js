@@ -1,0 +1,8 @@
+export const ADMIN_ROUTE = '/admin'
+export const LOGIN_ROUTE = '/login'
+export const SIGNUP_ROUTE = '/signup'
+export const HOME_ROUTE = '/home'
+export const MY_ROUTE = '/my'
+export const MAIN_ROUTE = '/'
+export const JOBS_ROUTE = '/jobs'
+export const SPECIALISTS_ROUTE = '/specialists'
