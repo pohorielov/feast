@@ -2,17 +2,14 @@ import React from 'react';
 import {Routes, Route, Navigate} from 'react-router-dom'
 import {clientRoutes, publicRoutes, specialistRoutes} from "../routes";
 import {HOME_ROUTE, MAIN_ROUTE, MY_ROUTE} from "../utils/consts";
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 
-const AppRouter = () => {
+export const AppRouter = () => {
 
     const client = useSelector(state => state.user.isClient)
     const specialist = useSelector(state => state.user.isSpecialist)
 
     return (
-        <>
-
-        </>,
         <Routes>
             {client && clientRoutes.map(({path, Component}) =>
                 <>
@@ -35,5 +32,3 @@ const AppRouter = () => {
         </Routes>
     );
 };
-
-export default AppRouter;
