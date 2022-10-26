@@ -1,11 +1,9 @@
 import React from 'react';
 
-const My = () => {
+export const My = () => {
     return (
         <div>
             My
         </div>
     );
 };
-
-export default My;

@@ -8,14 +8,13 @@ import {
     SIGNUP_ROUTE,
     SPECIALISTS_ROUTE
 } from "./utils/consts";
-import Admin from "./pages/Admin";
-import My from "./pages/My";
-import Main from "./pages/Main";
-import Login from "./pages/Login";
-import SignUp from "./pages/SignUp";
-import Home from "./pages/Home";
-import Jobs from "./pages/Jobs";
-import Specialists from "./pages/Specialists";
+import {Admin} from "./pages/Admin";
+import {My} from "./pages/My";
+import {Main} from "./pages/Main";
+import {Auth} from "./pages/Auth";
+import {Home} from "./pages/Home";
+import {Jobs} from "./pages/Jobs";
+import {Specialists} from "./pages/Specialists";
 
 export const adminRoutes = [
     {
@@ -27,11 +26,11 @@ export const adminRoutes = [
 export const clientRoutes = [
     {
         path: LOGIN_ROUTE,
-        Component: <Login />,
+        Component: <Auth />,
     },
     {
         path: SIGNUP_ROUTE,
-        Component: <SignUp />,
+        Component: <Auth />,
     },
     {
         path: HOME_ROUTE,
@@ -54,11 +53,11 @@ export const specialistRoutes = [
     },
     {
         path: LOGIN_ROUTE,
-        Component: <Login />,
+        Component: <Auth />,
     },
     {
         path: SIGNUP_ROUTE,
-        Component: <SignUp />,
+        Component: <Auth />,
     },
     {
         path: JOBS_ROUTE,
@@ -70,6 +69,14 @@ export const publicRoutes = [
     {
         path: MAIN_ROUTE,
         Component: <Main />,
+    },
+    {
+        path: LOGIN_ROUTE,
+        Component: <Auth />,
+    },
+    {
+        path: SIGNUP_ROUTE,
+        Component: <Auth />,
     }
 ]
 
