@@ -1,6 +1,8 @@
 {
   "dependencies": {
     "@popperjs/core": "^2.11.6",
-    "bootstrap": "^5.2.2"
+    "@reduxjs/toolkit": "^1.8.6",
+    "bootstrap": "^5.2.2",
+    "react-calendar": "^3.9.0"
   }
 }
