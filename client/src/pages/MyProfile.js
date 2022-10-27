@@ -1,6 +1,7 @@
 import React from 'react';
 import {MY_ACCOUNT_ROUTE, MY_PROFILE_ROUTE} from "../utils/consts";
 import {useLocation} from "react-router-dom";
+import {MyCalendar} from "../components/Calendar";
 
 export const MyProfile = () => {
     const location = useLocation()
@@ -8,6 +9,7 @@ export const MyProfile = () => {
 
     return (
         <div className="container">
+            <br/>
             <h2 className="mt-5">Мій аккаунт</h2>
             <ul className="nav nav-pills mt-4">
                 <li className="nav-item">
@@ -19,11 +21,11 @@ export const MyProfile = () => {
             </ul>
             <hr className="mt-4 mb-4 opacity-25"/>
             <form>
-                <div className="row g-4 align-items-center">
-                    <div className="col-auto">
-                        <label className="col-form-label">Спеціальність</label>
+                <div className="row g-4 align-items-start">
+                    <div className="col-auto me-3">
+                        <label className="col-form-label fw-bold">Спеціальність</label>
                     </div>
-                    <div className="col-auto ms-2">
+                    <div className="col-4 ms-5">
                         <input type="text" id="position" className="form-control"/>
                         <span id="position" className="form-text">
                             Вкажіть, чим саме ви займаєтесь.
@@ -32,40 +34,63 @@ export const MyProfile = () => {
                 </div>
                 <div className="input-group mt-4">
                     <div className="col-auto">
-                        <label className="col-form-label">Вартість послуг</label>
+                        <label className="col-form-label fw-bold">Вартість послуг</label>
                     </div>
-                    <div className="col-auto">
+                    <div className="col-auto ms-5">
                         <span className="input-group-text ms-4">₴</span>
                     </div>
-                    <div className="col-auto">
+                    <div className="col-1">
                         <input type="text" className="form-control"/>
                     </div>
                 </div>
                 <div className="input-group mt-4">
                     <div className="col-auto me-4">
-                        <label htmlFor="customRange3" className="form-label">Досвід роботи</label>
+                        <label htmlFor="customRange3" className="form-label fw-bold">Досвід роботи</label>
                     </div>
-                    <div className="col-auto">
+                    <div className="col-4 mx-5">
                         <input type="range" className="form-range" min="0" max="10" step="0.5" id="customRange3"/>
                     </div>
                 </div>
                 <div className="input-group mt-4">
-
+                    <div className="col-auto me-4">
+                        <label className="col-form-label me-5 fw-bold">Країна</label>
+                    </div>
+                    <div className="col-auto mx-5">
+                        <select className="form-select mx-2" aria-label="Default select example">
+                            <option selected>Україна</option>
+                            <option value="1">Польща</option>
+                            <option value="2">Турція</option>
+                            <option value="3">Хорватія</option>
+                        </select>
+                    </div>
                 </div>
                 <div className="row mt-4 align-items-center">
-                    <div className="col-auto">
-                        <label className="col-form-label">Місто</label>
+                    <div className="col-auto me-5">
+                        <label className="col-form-label me-3 fw-bold">Місто</label>
                     </div>
-                    <div className="col-auto ms-2">
+                    <div className="col-4 mx-5">
                         <input type="text" id="position" className="form-control"/>
                     </div>
                 </div>
                 <div className="row mt-4 align-items-center">
                     <div className="col-auto">
-                        <label className="col-form-label">Досвід роботи</label>
+                        <label className="col-form-label fw-bold">Досвід роботи</label>
                     </div>
-                    <div className="col-auto ms-2">
+                    <div className="col-4 mx-5">
                         <input type="text" id="position" className="form-control"/>
+                    </div>
+                </div>
+                <div className="row mt-4 align-items-start">
+                    <div className="col-auto me-4">
+                        <label className="col-form-label fw-bold">Вільні дати</label>
+                    </div>
+                    <div className="col-auto mx-5">
+                        <MyCalendar />
+                    </div>
+                </div>
+                <div className="row mb-4 mx-auto align-items-start">
+                    <div className="col-auto me-auto">
+                        <button type="submit" className="btn btn-primary">Оновити профіль</button>
                     </div>
                 </div>
             </form>

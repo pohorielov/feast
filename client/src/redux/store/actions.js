@@ -1,4 +1,5 @@
 import {ADD_CLIENT, ADD_SPECIALIST} from "./types";
+import {createAction} from "@reduxjs/toolkit";
 
-export const clientAction = (payload) => ({type: ADD_CLIENT, payload})
-export const specialistAction = (payload) => ({type: ADD_SPECIALIST, payload})
+export const addClient = createAction(ADD_CLIENT)
+export const addSpecialist = createAction(ADD_SPECIALIST)

@@ -1,4 +1,15 @@
-import {useSelector} from "react-redux";
+import {createSelector} from "reselect";
 
-// export const clientSelector = useSelector(state => state.user.isClient)
-// export const specialistSelector = useSelector(state => state.user.isSpecialist)
+const userReducer = (state) => state.user
+
+const selectEmail = createSelector(userReducer, (user) => user.email)
+
+const selectStatusClient = createSelector(userReducer, (user) => user.isClient)
+
+const selectStatusSpecialist = createSelector(userReducer, (user) => user.isSpecialist)
+
+export {
+    selectEmail,
+    selectStatusClient,
+    selectStatusSpecialist,
+}

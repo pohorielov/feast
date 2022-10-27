@@ -1,4 +1,5 @@
-import {ADD_CLIENT, ADD_SPECIALIST, FETCH_EMAIL, FETCH_NAME} from "./types";
+import {createReducer} from "@reduxjs/toolkit";
+import {addClient, addSpecialist} from "./actions";
 
 const defaultState = {
     name: 'pohorielov',
@@ -7,17 +8,12 @@ const defaultState = {
     isSpecialist: true
 }
 
-export const userReducer = (state = defaultState, action) => {
-    switch(action.type) {
-        case ADD_CLIENT:
-            return {...state, isClient: state.isClient = action.payload}
-        case ADD_SPECIALIST:
-            return {...state, isSpecialist: state.isSpecialist = action.payload}
-        case FETCH_NAME:
-            return {...state, name: state.name}
-        case FETCH_EMAIL:
-            return {...state, email: state.email}
-        default:
-            return state
-    }
-}
+ createReducer(defaultState, {
+    [addClient]: (state, action) => {
+        state.isClient = action.payload
+    },
+    [addSpecialist]: (state, action) => {
+        state.isSpecialist = action.payload
+    },
+
+})
