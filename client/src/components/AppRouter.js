@@ -5,9 +5,8 @@ import {HOME_ROUTE, MAIN_ROUTE, MY_PROFILE_ROUTE} from "../utils/consts";
 import {useSelector} from "react-redux";
 
 export const AppRouter = () => {
-    const client = useSelector(state => state.user.isClient)
-    const specialist = useSelector(state => state.user.isSpecialist)
-
+  const client = useSelector((state) => state.user.isClient);
+  const specialist = useSelector((state) => state.user.isSpecialist);
     return (
         <Routes>
             {client && clientRoutes.map(({path, Component}) =>

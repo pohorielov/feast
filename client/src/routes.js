@@ -1,3 +1,4 @@
+import { React } from 'react';
 import {
     ADMIN_ROUTE,
     HOME_ROUTE,
@@ -19,12 +20,13 @@ import {MyInbox} from "./pages/MyInbox";
 import {MyDashboard} from "./pages/MyDashboard";
 import {MyAccount} from "./pages/MyAccount";
 
+
 export const adminRoutes = [
-    {
-        path: ADMIN_ROUTE,
-        Component: <Admin />,
-    }
-]
+  {
+    path: ADMIN_ROUTE,
+    Component: <Admin />,
+  },
+];
 
 export const clientRoutes = [
     {
@@ -64,18 +66,18 @@ export const specialistRoutes = [
     }
 ]
 
-export const publicRoutes = [
-    {
-        path: MAIN_ROUTE,
-        Component: <Main />,
-    },
-    {
-        path: LOGIN_ROUTE,
-        Component: <Auth />,
-    },
-    {
-        path: SIGNUP_ROUTE,
-        Component: <Auth />,
-    }
-]
 
+export const publicRoutes = [
+  {
+    path: MAIN_ROUTE,
+    Component: <Main />,
+  },
+  {
+    path: LOGIN_ROUTE,
+    Component: <Auth />,
+  },
+  {
+    path: SIGNUP_ROUTE,
+    Component: <Auth />,
+  },
+];
