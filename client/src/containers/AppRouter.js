@@ -11,80 +11,70 @@ import { MyDashboard } from '../pages/MyDashboard';
 import { MyInbox } from '../pages/MyInbox';
 import { MyProfile } from '../pages/MyProfile';
 import { Specialists } from '../pages/Specialists';
-import {
-  HOME_ROUTE,
-  JOBS_ROUTE,
-  LOGIN_ROUTE,
-  MAIN_ROUTE,
-  MY_ACCOUNT_ROUTE,
-  MY_DASHBOARD_ROUTE,
-  MY_INBOX_ROUTE,
-  MY_PROFILE_ROUTE,
-  SIGNUP_ROUTE,
-  SPECIALISTS_ROUTE,
-} from '../routes';
+import { selectStatusClient, selectStatusSpecialist } from '../redux/store/selector';
+import { mainRoutes } from '../routes';
 
 export const AppRouter = () => {
-  const client = useSelector((state) => state.user.isClient);
-  const specialist = useSelector((state) => state.user.isSpecialist);
+  const client = useSelector(selectStatusClient);
+  const specialist = useSelector(selectStatusSpecialist);
 
   const clientRoutes = [
     {
-      path: MAIN_ROUTE,
+      path: mainRoutes.main,
       Component: <Main />,
     },
     {
-      path: HOME_ROUTE,
+      path: mainRoutes.home,
       Component: <Home />,
     },
     {
-      path: JOBS_ROUTE,
+      path: mainRoutes.jobs,
       Component: <Jobs />,
     },
     {
-      path: SPECIALISTS_ROUTE,
+      path: mainRoutes.specialists,
       Component: <Specialists />,
     },
   ];
 
   const specialistRoutes = [
     {
-      path: MAIN_ROUTE,
-      Component: <MyProfile />,
-    },
-    {
-      path: MY_PROFILE_ROUTE,
-      Component: <MyProfile />,
-    },
-    {
-      path: JOBS_ROUTE,
-      Component: <Jobs />,
-    },
-    {
-      path: MY_INBOX_ROUTE,
-      Component: <MyInbox />,
-    },
-    {
-      path: MY_DASHBOARD_ROUTE,
+      path: mainRoutes.main,
       Component: <MyDashboard />,
     },
     {
-      path: MY_ACCOUNT_ROUTE,
+      path: mainRoutes.my.profile,
+      Component: <MyProfile />,
+    },
+    {
+      path: mainRoutes.jobs,
+      Component: <Jobs />,
+    },
+    {
+      path: mainRoutes.my.inbox,
+      Component: <MyInbox />,
+    },
+    {
+      path: mainRoutes.my.dashboard,
+      Component: <MyDashboard />,
+    },
+    {
+      path: mainRoutes.my.account,
       Component: <MyAccount />,
     },
   ];
 
   const publicRoutes = [
     {
-      path: MAIN_ROUTE,
+      path: mainRoutes.main,
       Component: <Main />,
     },
     {
-      path: LOGIN_ROUTE,
+      path: mainRoutes.login,
       Component: <Auth />,
     },
     {
-      path: SIGNUP_ROUTE,
+      path: mainRoutes.signup,
       Component: <Auth />,
     },
   ];
@@ -98,8 +88,6 @@ export const AppRouter = () => {
     } else {
       setRoutes(publicRoutes);
     }
-    console.log(client);
-    console.log(specialist);
   }, [client, specialist]);
 
   return (
@@ -107,12 +95,7 @@ export const AppRouter = () => {
       {routes.map(({ path, Component }) => (
         <Route key={path} path={path} element={Component} />
       ))}
-      {/*{specialist &&*/}
-      {/*  specialistRoutes.map(({ path, Component }) => <Route key={path} path={path} element={Component} />)}*/}
-      {/*{publicRoutes.map(({ path, Component }) => (*/}
-      {/*  <Route key={path} path={path} element={Component} />*/}
-      {/*))}*/}
-      <Route path="/*" element={<Navigate replace to={MAIN_ROUTE} />} />
+      <Route path="/*" element={<Navigate replace to={mainRoutes.main} />} />
     </Routes>
   );
 };

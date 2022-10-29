@@ -4,20 +4,11 @@ import { Link, useLocation } from 'react-router-dom';
 
 import { selectEmail, selectStatusClient, selectStatusSpecialist } from '../redux/store/selector';
 import { addSpecialist } from '../redux/store/userSlice';
-import {
-  HOME_ROUTE,
-  JOBS_ROUTE,
-  LOGIN_ROUTE,
-  MAIN_ROUTE,
-  MY_DASHBOARD_ROUTE,
-  MY_INBOX_ROUTE,
-  MY_PROFILE_ROUTE,
-  SIGNUP_ROUTE,
-} from '../routes/index';
+import { mainRoutes } from '../routes/index';
 
 export const Navbar = () => {
   const location = useLocation();
-  const isMain = location.pathname === MAIN_ROUTE;
+  const isMain = location.pathname === mainRoutes.main;
   const client = useSelector(selectStatusClient);
   const specialist = useSelector(selectStatusSpecialist);
   const email = useSelector(selectEmail);
@@ -28,9 +19,9 @@ export const Navbar = () => {
       {client ? (
         <nav className="navbar navbar-expand-lg bg-dark p-0 fixed-top">
           <div className="container">
-            <a className="navbar-brand fs-3 fw-bold" style={{ color: 'white' }} href={HOME_ROUTE}>
+            <Link className="navbar-brand fs-3 fw-bold" style={{ color: 'white' }} to={mainRoutes.home}>
               feast
-            </a>
+            </Link>
             <div className="collapse navbar-collapse" id="navbarNav">
               <button className="btn btn-outline-light ms-auto">клиент1</button>
               <button className="btn btn-outline-light ms-2">клиент2</button>
@@ -40,19 +31,19 @@ export const Navbar = () => {
       ) : specialist ? (
         <nav className="navbar navbar-expand-lg bg-light p-0 border fixed-top">
           <div className="container">
-            <a className="navbar-brand fs-3 fw-bold" style={{ color: 'black' }} href={MY_DASHBOARD_ROUTE}>
+            <Link className="navbar-brand fs-3 fw-bold" style={{ color: 'black' }} to={mainRoutes.my.dashboard}>
               feast
-            </a>
+            </Link>
             <div className="collapse navbar-collapse navbar-nav" id="navbarNav">
-              <a className="nav-link ms-5" href={MY_INBOX_ROUTE}>
+              <Link className="nav-link ms-5" to={mainRoutes.my.inbox}>
                 Пропозиції
-              </a>
-              <a className="nav-link ms-3" href={JOBS_ROUTE}>
+              </Link>
+              <Link className="nav-link ms-3" to={mainRoutes.jobs}>
                 Вакансії
-              </a>
-              <a className="nav-link ms-auto " href={MY_PROFILE_ROUTE}>
+              </Link>
+              <Link className="nav-link ms-auto " to={mainRoutes.my.profile}>
                 {email}
-              </a>
+              </Link>
               <div className="dropdown">
                 <button
                   className="btn btn-light dropdown-toggle"
@@ -62,9 +53,9 @@ export const Navbar = () => {
                 ></button>
                 <ul className="dropdown-menu dropdown-menu-end">
                   <li>
-                    <a className="dropdown-item" href={MY_PROFILE_ROUTE}>
+                    <Link className="dropdown-item" to={mainRoutes.my.profile}>
                       Мій профіль
-                    </a>
+                    </Link>
                   </li>
                   <li>
                     <button className="dropdown-item" onClick={() => dispatch(addSpecialist(false))}>
@@ -75,9 +66,9 @@ export const Navbar = () => {
                     <hr className="dropdown-divider" />
                   </li>
                   <li>
-                    <a className="dropdown-item opacity-50" href="#">
+                    <Link className="dropdown-item opacity-50" to="#">
                       Профіль клієнта
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -87,16 +78,16 @@ export const Navbar = () => {
       ) : (
         <nav className="navbar navbar-expand-lg bg-primary p-0">
           <div className="container">
-            <a className="navbar-brand fs-3 fw-bold" style={{ color: 'white' }} href={MAIN_ROUTE}>
+            <Link className="navbar-brand fs-3 fw-bold" style={{ color: 'white' }} to={mainRoutes.main}>
               feast
-            </a>
+            </Link>
             <div className={isMain ? 'collapse navbar-collapse' : 'visually-hidden'} id="navbarNav">
-              <a className="btn btn-outline-light ms-auto" href={LOGIN_ROUTE}>
+              <Link className="btn btn-outline-light ms-auto" to={mainRoutes.login}>
                 Увійти
-              </a>
-              <a className="btn btn-outline-light ms-2" href={SIGNUP_ROUTE}>
+              </Link>
+              <Link className="btn btn-outline-light ms-2" to={mainRoutes.signup}>
                 Реєстрація
-              </a>
+              </Link>
             </div>
           </div>
         </nav>

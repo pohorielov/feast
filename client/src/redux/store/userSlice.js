@@ -6,7 +6,7 @@ const userSlice = createSlice({
     name: 'pohorielov',
     email: 'i.pogorelow3@gmail.com',
     isClient: false,
-    isSpecialist: false,
+    isSpecialist: true,
   },
   reducers: {
     addClient(state, action) {
