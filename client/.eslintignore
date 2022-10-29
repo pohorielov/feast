@@ -1,0 +1,6 @@
+public/*
+node_modules/*
+*.css
+*.scss
+*.config.js
+jsconfig.json
