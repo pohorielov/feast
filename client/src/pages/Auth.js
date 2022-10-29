@@ -7,13 +7,9 @@ import { LOGIN_ROUTE, SIGNUP_ROUTE } from '../routes/index';
 
 export const Auth = () => {
   const location = useLocation();
-  const history = useHist;
   const isSignup = location.pathname === SIGNUP_ROUTE;
 
   const dispatch = useDispatch();
-  const onClick = () => {
-    dispatch(addSpecialist(true));
-  };
 
   return (
     <div
