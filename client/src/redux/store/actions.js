@@ -1,5 +1,6 @@
-import {ADD_CLIENT, ADD_SPECIALIST} from "./types";
-import {createAction} from "@reduxjs/toolkit";
+import { createAction } from '@reduxjs/toolkit';
 
-export const addClient = createAction(ADD_CLIENT)
-export const addSpecialist = createAction(ADD_SPECIALIST)
+import { ADD_CLIENT, ADD_SPECIALIST } from './types';
+
+export const addClient = createAction(ADD_CLIENT);
+export const addSpecialist = createAction(ADD_SPECIALIST);
