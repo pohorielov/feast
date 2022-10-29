@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-undef
 module.exports = {
   env: {
     browser: true,
@@ -10,6 +11,8 @@ module.exports = {
     'plugin:prettier/recommended',
     'prettier',
     'plugin:react/recommended',
+    'plugin:import/errors',
+    'plugin:import/warnings',
   ],
   overrides: [],
   parserOptions: {
@@ -19,7 +22,6 @@ module.exports = {
   plugins: ['react', 'prettier', 'import'],
   rules: {
     'no-debugger': 'warn',
-    'import/no-unresolved': 'off',
     'import/no-unresolved': 'off',
     'import/order': [
       'error',
