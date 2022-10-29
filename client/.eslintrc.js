@@ -14,6 +14,17 @@ module.exports = {
     'plugin:import/errors',
     'plugin:import/warnings',
   ],
+  settings: {
+    'import/resolver': {
+      node: {
+        paths: ['src'],
+        modulesDirectories: ['node_modules'],
+      },
+    },
+    react: {
+      version: 'detect', // Automatically detect the React version
+    },
+  },
   overrides: [],
   parserOptions: {
     ecmaVersion: 'latest',
@@ -22,7 +33,9 @@ module.exports = {
   plugins: ['react', 'prettier', 'import'],
   rules: {
     'no-debugger': 'warn',
-    'import/no-unresolved': 'off',
+    'import/no-unresolved': 0,
+    'jsx-a11y/label-has-associated-control': 0,
+    'jsx-a11y/anchor-is-valid': 0,
     'import/order': [
       'error',
       {

@@ -1,15 +1,11 @@
-import {createSelector} from "reselect";
+import { createSelector } from 'reselect';
 
-const userReducer = (state) => state.user
+const userReducer = (state) => state.user;
 
-const selectEmail = createSelector(userReducer, (user) => user.email)
+const selectEmail = createSelector(userReducer, (user) => user.email);
 
-const selectStatusClient = createSelector(userReducer, (user) => user.isClient)
+const selectStatusClient = createSelector(userReducer, (user) => user.isClient);
 
-const selectStatusSpecialist = createSelector(userReducer, (user) => user.isSpecialist)
+const selectStatusSpecialist = createSelector(userReducer, (user) => user.isSpecialist);
 
-export {
-    selectEmail,
-    selectStatusClient,
-    selectStatusSpecialist,
-}
+export { selectEmail, selectStatusClient, selectStatusSpecialist };

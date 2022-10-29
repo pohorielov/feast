@@ -1,23 +1,22 @@
-import {createSlice} from "@reduxjs/toolkit";
-
+import { createSlice } from '@reduxjs/toolkit';
 
 const userSlice = createSlice({
-    name: "user",
-    initialState: {
-        name: 'pohorielov',
-        email: 'i.pogorelow3@gmail.com',
-        isClient: false,
-        isSpecialist: true
+  name: 'user',
+  initialState: {
+    name: 'pohorielov',
+    email: 'i.pogorelow3@gmail.com',
+    isClient: false,
+    isSpecialist: true,
+  },
+  reducers: {
+    addClient(state, action) {
+      state.isClient = action.payload;
     },
-    reducers: {
-        addClient(state, action) {
-            state.isClient = action.payload
-        },
-        addSpecialist(state, action) {
-            state.isSpecialist = action.payload
-        },
-    }
-})
+    addSpecialist(state, action) {
+      state.isSpecialist = action.payload;
+    },
+  },
+});
 
-export default userSlice.reducer
-export const {addClient, addSpecialist} = userSlice.actions
+export default userSlice.reducer;
+export const { addClient, addSpecialist } = userSlice.actions;
