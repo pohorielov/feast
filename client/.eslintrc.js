@@ -10,7 +10,6 @@ module.exports = {
     'plugin:jsx-a11y/recommended',
     'plugin:prettier/recommended',
     'prettier',
-    'plugin:react/recommended',
     'plugin:import/errors',
     'plugin:import/warnings',
   ],
@@ -32,6 +31,9 @@ module.exports = {
   },
   plugins: ['react', 'prettier', 'import'],
   rules: {
+    'react/jsx-uses-react': 'warn',
+    'react/jsx-uses-vars': 'warn',
+    'no-unused-vars': 'warn',
     'no-debugger': 'warn',
     'import/no-unresolved': 0,
     'jsx-a11y/label-has-associated-control': 0,

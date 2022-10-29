@@ -2,12 +2,13 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 
 import { MyCalendar } from '../components/Calendar';
-import { MY_ACCOUNT_ROUTE, MY_PROFILE_ROUTE } from '../utils/consts';
+import { MY_ACCOUNT_ROUTE, MY_PROFILE_ROUTE } from '../routes/index';
 
 export const MyProfile = () => {
   const location = useLocation();
-  const profile = location.pathname === MY_PROFILE_ROUTE;
 
+  // const profile = location.pathname === MY_PROFILE_ROUTE;
+  const profile = true;
   return (
     <div className="container">
       <br />

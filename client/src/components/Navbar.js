@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import { selectEmail, selectStatusClient, selectStatusSpecialist } from '../redux/store/selector';
 import { addSpecialist } from '../redux/store/userSlice';
@@ -13,7 +13,7 @@ import {
   MY_INBOX_ROUTE,
   MY_PROFILE_ROUTE,
   SIGNUP_ROUTE,
-} from '../utils/consts';
+} from '../routes/index';
 
 export const Navbar = () => {
   const location = useLocation();
@@ -67,9 +67,9 @@ export const Navbar = () => {
                     </a>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#" onClick={() => dispatch(addSpecialist(false))}>
+                    <button className="dropdown-item" onClick={() => dispatch(addSpecialist(false))}>
                       Вийти
-                    </a>
+                    </button>
                   </li>
                   <li>
                     <hr className="dropdown-divider" />

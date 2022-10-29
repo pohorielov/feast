@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 
-import { MY_ACCOUNT_ROUTE, MY_PROFILE_ROUTE } from '../utils/consts';
+import { MY_ACCOUNT_ROUTE, MY_PROFILE_ROUTE } from '../routes/index';
 
 export const MyAccount = () => {
   const location = useLocation();

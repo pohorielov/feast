@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { TypedText } from '../components/TypedText';
-import { SIGNUP_ROUTE } from '../utils/consts';
+import { SIGNUP_ROUTE } from '../routes/index';
 
 export const Main = () => {
   return (

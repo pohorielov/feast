@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 
-import { MAIN_ROUTE } from '../utils/consts';
+import { MAIN_ROUTE } from '../routes/index';
 
 export const Footer = () => {
   const location = useLocation();

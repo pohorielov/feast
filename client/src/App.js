@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 
-import { AppRouter } from './components/AppRouter';
 import { Footer } from './components/Footer';
 import { Navbar } from './components/Navbar';
+import { AppRouter } from './containers/AppRouter';
 
 function App() {
   return (

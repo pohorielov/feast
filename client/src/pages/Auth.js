@@ -3,13 +3,17 @@ import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 
 import { addSpecialist } from '../redux/store/userSlice';
-import { LOGIN_ROUTE, SIGNUP_ROUTE } from '../utils/consts';
+import { LOGIN_ROUTE, SIGNUP_ROUTE } from '../routes/index';
 
 export const Auth = () => {
   const location = useLocation();
+  const history = useHist;
   const isSignup = location.pathname === SIGNUP_ROUTE;
 
   const dispatch = useDispatch();
+  const onClick = () => {
+    dispatch(addSpecialist(true));
+  };
 
   return (
     <div
