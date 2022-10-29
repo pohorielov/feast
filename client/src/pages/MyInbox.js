@@ -1,9 +1,9 @@
 import React from 'react';
 
-export const My = () => {
+export const MyInbox = () => {
     return (
         <div>
-            My
+            Inbox
         </div>
     );
 };

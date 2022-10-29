@@ -1,17 +1,19 @@
-import {ADD_CLIENT, ADD_SPECIALIST} from "./types";
+import {createReducer} from "@reduxjs/toolkit";
+import {addClient, addSpecialist} from "./actions";
 
 const defaultState = {
+    name: 'pohorielov',
+    email: 'i.pogorelow3@gmail.com',
     isClient: false,
-    isSpecialist: false
+    isSpecialist: true
 }
 
-export const userReducer = (state = defaultState, action) => {
-    switch(action.payload) {
-        case ADD_CLIENT:
-            return {...state, isClient: state.isClient = action.payload}
-        case ADD_SPECIALIST:
-            return {...state, isSpecialist: state.isSpecialist = action.payload}
-        default:
-            return state
-    }
-}
+ createReducer(defaultState, {
+    [addClient]: (state, action) => {
+        state.isClient = action.payload
+    },
+    [addSpecialist]: (state, action) => {
+        state.isSpecialist = action.payload
+    },
+
+})

@@ -1,10 +1,14 @@
 import React from 'react';
 import {useLocation} from "react-router-dom";
 import {LOGIN_ROUTE, SIGNUP_ROUTE} from "../utils/consts";
+import {useDispatch} from "react-redux";
+import {addSpecialist} from "../redux/store/userSlice";
 
 export const Auth = () => {
     const location = useLocation()
     const isSignup = location.pathname === SIGNUP_ROUTE
+
+    const dispatch = useDispatch()
 
     return (
         <div
@@ -44,7 +48,7 @@ export const Auth = () => {
                             </label>
                         </div>
                     </div>
-                <button type="submit" className="btn btn-primary">{isSignup ? 'Продовжити' : 'Увійти'}</button>
+                <button type="submit" className="btn btn-primary" onClick={() => dispatch(addSpecialist(true))}>{isSignup ? 'Продовжити' : 'Увійти'}</button>
                 {isSignup ?
                     <div className="mt-3">
                         <a href={LOGIN_ROUTE} style={{ textDecoration: "none" }}>Я вже маю аккаунт</a>
