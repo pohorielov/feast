@@ -35,7 +35,7 @@ export const Auth = () => {
               type="radio"
               name="flexRadioDefault"
               id="flexRadioDefault1"
-              value="isClient"
+              value="client"
             />
             <label className="form-check-label" htmlFor="flexRadioDefault1">
               Я клієнт - шукаю спеціалістів
@@ -47,7 +47,7 @@ export const Auth = () => {
               type="radio"
               name="flexRadioDefault"
               id="flexRadioDefault2"
-              value="isSpecialist"
+              value="specialist"
             />
             <label className="form-check-label" htmlFor="flexRadioDefault2">
               Я кандидат - шукаю пропозиції

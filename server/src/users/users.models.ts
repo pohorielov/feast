@@ -1,14 +1,20 @@
-import { Column, DataType, Model, Table } from "sequelize-typescript";
+import {
+  BelongsToMany,
+  Column,
+  DataType,
+  Model,
+  Table,
+} from "sequelize-typescript";
+import { Role } from "../roles/roles.models";
+import { UserRoles } from "../roles/user-roles.model";
 
 interface UserCreationAttrs {
   email: string;
   password: string;
-  isClient: boolean;
-  isSpecialist: boolean;
 }
 
 @Table({ tableName: "users" })
-export class User extends Model<User> {
+export class User extends Model<User, UserCreationAttrs> {
   @Column({
     type: DataType.INTEGER,
     unique: true,
@@ -36,15 +42,6 @@ export class User extends Model<User> {
   })
   name: string;
 
-  @Column({
-    type: DataType.BOOLEAN,
-    defaultValue: false,
-  })
-  isClient: boolean;
-
-  @Column({
-    type: DataType.BOOLEAN,
-    defaultValue: false,
-  })
-  isSpecialist: boolean;
+  @BelongsToMany(() => Role, () => UserRoles)
+  roles: Role[];
 }

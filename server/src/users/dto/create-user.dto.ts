@@ -1,6 +1,9 @@
+import { IsEmail, IsString } from "@nestjs/class-validator";
+
 export class CreateUserDto {
-  readonly email: string;
-  readonly password: string;
-  readonly isClient: boolean;
-  readonly isSpecialist: boolean;
+  @IsEmail()
+  email: string;
+
+  @IsString()
+  password: string;
 }
