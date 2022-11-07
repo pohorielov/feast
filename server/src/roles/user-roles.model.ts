@@ -30,7 +30,4 @@ export class UserRoles extends Model<UserRoles> {
     type: DataType.INTEGER,
   })
   roleId: number;
-
-  @BelongsToMany(() => User, () => UserRoles)
-  users: User[];
 }

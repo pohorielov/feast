@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 
+import { login, registration } from '../http/userAPI';
 import { addSpecialist } from '../redux/store/userSlice';
 import { mainRoutes } from '../routes/index';
 
@@ -10,6 +11,18 @@ export const Auth = () => {
   const isSignup = location.pathname === mainRoutes.signup;
 
   const dispatch = useDispatch();
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const click = async () => {
+    if (isSignup) {
+      const response = await registration(email, password);
+      console.log(response);
+    } else {
+      const response = await login();
+    }
+  };
 
   return (
     <div
@@ -25,8 +38,17 @@ export const Auth = () => {
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
             placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
-          <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Пароль" />
+          <input
+            type="password"
+            className="form-control"
+            id="exampleInputPassword1"
+            placeholder="Пароль"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
         </div>
         <div className={isSignup ? 'visually-visible' : 'visually-hidden'}>
           <div className="form-check">
@@ -54,7 +76,7 @@ export const Auth = () => {
             </label>
           </div>
         </div>
-        <button type="submit" className="btn btn-primary" onClick={() => dispatch(addSpecialist(true))}>
+        <button type="submit" className="btn btn-primary" onClick={click}>
           {isSignup ? 'Продовжити' : 'Увійти'}
         </button>
         {isSignup ? (
