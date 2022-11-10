@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 
 import { selectEmail, selectStatusClient, selectStatusSpecialist } from '../redux/store/selector';
-import { addSpecialist } from '../redux/store/userSlice';
+import { addSpecialist, addClient } from '../redux/store/userSlice';
 import { mainRoutes } from '../routes/index';
 
 export const Navbar = () => {
@@ -24,7 +24,9 @@ export const Navbar = () => {
             </Link>
             <div className="collapse navbar-collapse" id="navbarNav">
               <button className="btn btn-outline-light ms-auto">клиент1</button>
-              <button className="btn btn-outline-light ms-2">клиент2</button>
+              <button className="btn btn-outline-light ms-2" onClick={() => dispatch(addClient(false))}>
+                Вийти
+              </button>
             </div>
           </div>
         </nav>

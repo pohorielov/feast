@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 
 import { login, registration } from '../http/userAPI';
-import { addSpecialist } from '../redux/store/userSlice';
+import { addClient, addSpecialist } from '../redux/store/userSlice';
 import { mainRoutes } from '../routes/index';
 
 export const Auth = () => {
@@ -16,11 +16,15 @@ export const Auth = () => {
   const [password, setPassword] = useState('');
 
   const click = async () => {
-    if (isSignup) {
-      const response = await registration(email, password);
-      console.log(response);
-    } else {
-      const response = await login();
+    try {
+      let data;
+      if (isSignup) {
+        const data = await registration(email, password);
+      } else {
+        const data = await login(email, password);
+      }
+    } catch (e) {
+      alert(e.response.data.message);
     }
   };
 
