@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 
 import { login, registration } from '../http/userAPI';
-import { addClient, addSpecialist } from '../redux/store/userSlice';
+import { addEmail, addRole } from '../redux/store/userSlice';
 import { mainRoutes } from '../routes/index';
 
 export const Auth = () => {
@@ -14,15 +14,19 @@ export const Auth = () => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [role, setRole] = useState('');
 
   const click = async () => {
     try {
       let data;
       if (isSignup) {
-        const data = await registration(email, password);
+        const data = await registration(email, password, role);
+        dispatch(addRole(role));
       } else {
         const data = await login(email, password);
+        dispatch(addRole(data.role));
       }
+      dispatch(addEmail(email));
     } catch (e) {
       alert(e.response.data.message);
     }
@@ -61,7 +65,8 @@ export const Auth = () => {
               type="radio"
               name="flexRadioDefault"
               id="flexRadioDefault1"
-              value="client"
+              value={role}
+              onChange={() => setRole('client')}
             />
             <label className="form-check-label" htmlFor="flexRadioDefault1">
               Я клієнт - шукаю спеціалістів
@@ -73,7 +78,8 @@ export const Auth = () => {
               type="radio"
               name="flexRadioDefault"
               id="flexRadioDefault2"
-              value="specialist"
+              value={role}
+              onChange={() => setRole('specialist')}
             />
             <label className="form-check-label" htmlFor="flexRadioDefault2">
               Я кандидат - шукаю пропозиції

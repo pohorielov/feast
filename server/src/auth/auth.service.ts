@@ -9,7 +9,7 @@ import { UsersService } from "../users/users.service";
 import { JwtService } from "@nestjs/jwt";
 import * as bcrypt from "bcryptjs";
 import { User } from "../users/users.models";
-
+ 
 @Injectable()
 export class AuthService {
   constructor(
@@ -17,8 +17,13 @@ export class AuthService {
     private jwtService: JwtService
   ) {}
 
+  async check(userData: CreateUserDto) {
+    const user = await this.validateUser(userData); 
+    return this.generateToken(user);
+  }
+  
   async login(userData: CreateUserDto) {
-    const user = await this.validateUser(userData);
+    const user = await this.validateUser(userData); 
     return this.generateToken(user);
   }
 
@@ -42,7 +47,7 @@ export class AuthService {
     const payload = {
       email: user.email,
       id: user.id,
-      roles: user.roles,
+      role: user.role,
     };
     return {
       token: this.jwtService.sign(payload),

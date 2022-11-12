@@ -3,19 +3,12 @@ import { createSlice } from '@reduxjs/toolkit';
 const userSlice = createSlice({
   name: 'user',
   initialState: {
-    name: '',
     email: '',
-    role: {
-      client: false,
-      specialist: false,
-    },
+    role: '',
   },
   reducers: {
-    addClient(state, action) {
-      state.role.client = action.payload;
-    },
-    addSpecialist(state, action) {
-      state.role.specialist = action.payload;
+    addRole(state, action) {
+      state.role = action.payload;
     },
     addEmail(state, action) {
       state.email = action.payload;
@@ -24,4 +17,4 @@ const userSlice = createSlice({
 });
 
 export default userSlice.reducer;
-export const { addClient, addSpecialist, addEmail } = userSlice.actions;
+export const { addRole, addEmail } = userSlice.actions;
