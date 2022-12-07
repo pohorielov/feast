@@ -12,8 +12,9 @@ export class UsersController {
     return this.userService.createUser(userBody);
   }
 
+  @UseGuards(JwtAuthGuard)
   @Get()
-  async getUsers() {
-    return await this.userService.getUsers();
+  getUsers() {
+    return this.userService.getUsers();
   }
 }

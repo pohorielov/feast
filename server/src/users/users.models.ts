@@ -5,6 +5,7 @@ import {
   Table,
 } from "sequelize-typescript";
 interface UserCreationAttrs {
+  id: number;
   email: string;
   password: string;
   role: string;
