@@ -10,6 +10,10 @@ const userSlice = createSlice({
     addRole(state, action) {
       state.role = action.payload;
     },
+    auth(state, action) {
+      state.email = action.payload.email;
+      state.role = action.payload.role;
+    },
     addEmail(state, action) {
       state.email = action.payload;
     },
@@ -17,4 +21,4 @@ const userSlice = createSlice({
 });
 
 export default userSlice.reducer;
-export const { addRole, addEmail } = userSlice.actions;
+export const { addRole, addEmail, auth } = userSlice.actions;

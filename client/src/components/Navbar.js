@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 
+import * as Api from '../http/userAPI';
 import { selectEmail, selectStatusClient, selectStatusSpecialist } from '../redux/store/selector';
-import { addRole } from '../redux/store/userSlice';
+import { auth } from '../redux/store/userSlice';
 import { mainRoutes } from '../routes/index';
 
 export const Navbar = () => {
@@ -13,6 +14,12 @@ export const Navbar = () => {
   const specialist = useSelector(selectStatusSpecialist);
   const email = useSelector(selectEmail);
   const dispatch = useDispatch();
+
+  const logout = useCallback(() => {
+    Api.logout();
+    localStorage.removeItem('accessToken');
+    dispatch(auth({}));
+  }, []);
 
   return (
     <>
@@ -24,7 +31,7 @@ export const Navbar = () => {
             </Link>
             <div className="collapse navbar-collapse" id="navbarNav">
               <button className="btn btn-outline-light ms-auto">клиент1</button>
-              <button className="btn btn-outline-light ms-2" onClick={() => dispatch(addRole(''))}>
+              <button className="btn btn-outline-light ms-2" onClick={() => logout()}>
                 Вийти
               </button>
             </div>
@@ -60,7 +67,7 @@ export const Navbar = () => {
                     </Link>
                   </li>
                   <li>
-                    <button className="dropdown-item" onClick={() => dispatch(addRole(''))}>
+                    <button className="dropdown-item" onClick={() => logout()}>
                       Вийти
                     </button>
                   </li>

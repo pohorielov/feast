@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 
-import { login, registration } from '../http/userAPI';
-import { addEmail, addRole } from '../redux/store/userSlice';
+import * as Api from '../http/userAPI';
+import { auth } from '../redux/store/userSlice';
 import { mainRoutes } from '../routes/index';
 
 export const Auth = () => {
@@ -18,15 +18,13 @@ export const Auth = () => {
 
   const click = async () => {
     try {
-      let data;
       if (isSignup) {
-        const data = await registration(email, password, role);
-        dispatch(addRole(role));
+        const data = await Api.registration(email, password, role);
+        dispatch(auth(data));
       } else {
-        const data = await login(email, password);
-        dispatch(addRole(data.role));
+        const data = await Api.login(email, password);
+        dispatch(auth(data));
       }
-      dispatch(addEmail(email));
     } catch (e) {
       alert(e.response.data.message);
     }
