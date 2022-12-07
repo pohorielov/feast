@@ -1,13 +1,13 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import { addSpecialist } from '../redux/store/userSlice';
-import { LOGIN_ROUTE, SIGNUP_ROUTE } from '../utils/consts';
+import { mainRoutes } from '../routes/index';
 
 export const Auth = () => {
   const location = useLocation();
-  const isSignup = location.pathname === SIGNUP_ROUTE;
+  const isSignup = location.pathname === mainRoutes.signup;
 
   const dispatch = useDispatch();
 
@@ -16,7 +16,7 @@ export const Auth = () => {
       className="container d-flex justify-content-center align-items-center"
       style={{ height: window.innerHeight - 254 }}
     >
-      <form>
+      <div>
         <h2 className="mb-3">{isSignup ? 'Реєстрація на feast' : 'Увійти на feast'}</h2>
         <div className="mb-3">
           <input
@@ -35,7 +35,7 @@ export const Auth = () => {
               type="radio"
               name="flexRadioDefault"
               id="flexRadioDefault1"
-              value="isClient"
+              value="client"
             />
             <label className="form-check-label" htmlFor="flexRadioDefault1">
               Я клієнт - шукаю спеціалістів
@@ -47,7 +47,7 @@ export const Auth = () => {
               type="radio"
               name="flexRadioDefault"
               id="flexRadioDefault2"
-              value="isSpecialist"
+              value="specialist"
             />
             <label className="form-check-label" htmlFor="flexRadioDefault2">
               Я кандидат - шукаю пропозиції
@@ -59,18 +59,18 @@ export const Auth = () => {
         </button>
         {isSignup ? (
           <div className="mt-3">
-            <a href={LOGIN_ROUTE} style={{ textDecoration: 'none' }}>
+            <Link to={mainRoutes.login} style={{ textDecoration: 'none' }}>
               Я вже маю аккаунт
-            </a>
+            </Link>
           </div>
         ) : (
           <div className="mt-3">
-            <a href={SIGNUP_ROUTE} style={{ textDecoration: 'none' }}>
+            <Link to={mainRoutes.signup} style={{ textDecoration: 'none' }}>
               Реєстрація
-            </a>
+            </Link>
           </div>
         )}
-      </form>
+      </div>
     </div>
   );
 };

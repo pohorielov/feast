@@ -1,31 +1,28 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { MyCalendar } from '../components/Calendar';
-import { MY_ACCOUNT_ROUTE, MY_PROFILE_ROUTE } from '../utils/consts';
+import { mainRoutes } from '../routes/index';
 
 export const MyProfile = () => {
-  const location = useLocation();
-  const profile = location.pathname === MY_PROFILE_ROUTE;
-
   return (
     <div className="container">
       <br />
       <h2 className="mt-5">Мій аккаунт</h2>
       <ul className="nav nav-pills mt-4">
         <li className="nav-item">
-          <a className={profile ? 'nav-link active' : 'nav-link'} aria-current="page" href={MY_PROFILE_ROUTE}>
+          <Link className="nav-link active" aria-current="page" to={mainRoutes.my.profile}>
             Профіль
-          </a>
+          </Link>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href={MY_ACCOUNT_ROUTE}>
+          <Link className="nav-link" to={mainRoutes.my.account}>
             Контакти та резюме
-          </a>
+          </Link>
         </li>
       </ul>
       <hr className="mt-4 mb-4 opacity-25" />
-      <form>
+      <div>
         <div className="row g-4 align-items-start">
           <div className="col-auto me-3">
             <label className="col-form-label fw-bold">Спеціальність</label>
@@ -102,7 +99,7 @@ export const MyProfile = () => {
             </button>
           </div>
         </div>
-      </form>
+      </div>
     </div>
   );
 };

@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { TypedText } from '../components/TypedText';
-import { SIGNUP_ROUTE } from '../utils/consts';
+import { mainRoutes } from '../routes/index';
 
 export const Main = () => {
   return (
@@ -12,9 +13,9 @@ export const Main = () => {
           style={{ height: '400px' }}
         >
           <h1 className="position-absolute bottom-50">Анонімний пошук роботи на feast</h1>
-          <a className="btn btn-success position-absolute bottom-0 m-5" href={SIGNUP_ROUTE}>
+          <Link className="btn btn-success position-absolute bottom-0 m-5" to={mainRoutes.signup}>
             Відправитись на пошуки
-          </a>
+          </Link>
           <div className="position-absolute top-50 m-5">
             <TypedText />
           </div>
@@ -36,9 +37,9 @@ export const Main = () => {
             Ви сплачуєте 10% від зарплати кандидата, за фактом виконання роботи. Якщо ви нікого не знайшли або кандидат
             не прийняв пропозицію, ви нічого не сплачуєте.
           </p>
-          <a className="btn btn-outline-light position-absolute bottom-0 m-5" href={SIGNUP_ROUTE}>
+          <Link className="btn btn-outline-light position-absolute bottom-0 m-5" to={mainRoutes.signup}>
             Розпочати пошук
-          </a>
+          </Link>
         </div>
       </div>
     </div>

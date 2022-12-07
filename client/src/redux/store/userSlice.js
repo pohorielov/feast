@@ -5,15 +5,17 @@ const userSlice = createSlice({
   initialState: {
     name: 'pohorielov',
     email: 'i.pogorelow3@gmail.com',
-    isClient: false,
-    isSpecialist: true,
+    role: {
+      client: false,
+      specialist: false,
+    },
   },
   reducers: {
     addClient(state, action) {
-      state.isClient = action.payload;
+      state.role.client = action.payload;
     },
     addSpecialist(state, action) {
-      state.isSpecialist = action.payload;
+      state.role.specialist = action.payload;
     },
   },
 });

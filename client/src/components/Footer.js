@@ -1,11 +1,11 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
-import { MAIN_ROUTE } from '../utils/consts';
+import { mainRoutes } from '../routes/index';
 
 export const Footer = () => {
   const location = useLocation();
-  const isMain = location.pathname === MAIN_ROUTE;
+  const isMain = location.pathname === mainRoutes.main;
 
   return (
     <footer>
@@ -22,70 +22,70 @@ export const Footer = () => {
             <tbody>
               <tr>
                 <td>
-                  <a href="#" style={{ textDecoration: 'none' }}>
+                  <Link to="#" style={{ textDecoration: 'none' }}>
                     Умови користування
-                  </a>
+                  </Link>
                 </td>
                 <td>
-                  <a href="#" style={{ textDecoration: 'none' }}>
+                  <Link to="#" style={{ textDecoration: 'none' }}>
                     Харків
-                  </a>
+                  </Link>
                 </td>
                 <td>
-                  <a href="#" style={{ textDecoration: 'none' }}>
+                  <Link to="#" style={{ textDecoration: 'none' }}>
                     Фотограф
-                  </a>
+                  </Link>
                 </td>
               </tr>
               <tr>
                 <td>
-                  <a href="#" style={{ textDecoration: 'none' }}>
+                  <Link to="#" style={{ textDecoration: 'none' }}>
                     Privacy
-                  </a>
+                  </Link>
                 </td>
                 <td>
-                  <a href="#" style={{ textDecoration: 'none' }}>
+                  <Link to="#" style={{ textDecoration: 'none' }}>
                     Київ
-                  </a>
+                  </Link>
                 </td>
                 <td>
-                  <a href="#" style={{ textDecoration: 'none' }}>
+                  <Link to="#" style={{ textDecoration: 'none' }}>
                     Відеограф
-                  </a>
+                  </Link>
                 </td>
               </tr>
               <tr>
                 <td></td>
                 <td>
-                  <a href="#" style={{ textDecoration: 'none' }}>
+                  <Link to="#" style={{ textDecoration: 'none' }}>
                     Львів
-                  </a>
+                  </Link>
                 </td>
                 <td>
-                  <a href="#" style={{ textDecoration: 'none' }}>
+                  <Link to="#" style={{ textDecoration: 'none' }}>
                     Декоратор
-                  </a>
+                  </Link>
                 </td>
               </tr>
               <tr>
                 <td></td>
                 <td>
-                  <a href="#" style={{ textDecoration: 'none' }}>
+                  <Link to="#" style={{ textDecoration: 'none' }}>
                     Одеса
-                  </a>
+                  </Link>
                 </td>
                 <td>
-                  <a href="#" style={{ textDecoration: 'none' }}>
+                  <Link to="#" style={{ textDecoration: 'none' }}>
                     Ведучий
-                  </a>
+                  </Link>
                 </td>
               </tr>
               <tr>
                 <td></td>
                 <td>
-                  <a href="#" style={{ textDecoration: 'none' }}>
+                  <Link to="#" style={{ textDecoration: 'none' }}>
                     Дніпро
-                  </a>
+                  </Link>
                 </td>
               </tr>
             </tbody>
