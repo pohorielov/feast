@@ -57,13 +57,13 @@ export class AuthService {
       throw new UnauthorizedException()
     }
     const userData = this.validateRefreshToken(refreshToken)
-    const tokenFromDb =  await this.findToken(refreshToken)
+    const tokenFromDb = await this.findToken(refreshToken)
     if(!userData || !tokenFromDb) {
       throw new UnauthorizedException()
     }
     const findUser = await this.userService.getUserById(userData.id)
-    const tokens = await this.generateTokens(userData);
-    await this.saveToken(userData.id, tokens.refreshToken)
+    const tokens = await this.generateTokens(findUser);
+    await this.saveToken(findUser.id, tokens.refreshToken)
 
     return tokens
   }
@@ -76,7 +76,7 @@ export class AuthService {
     };
 
     return {
-      accessToken: await this.jwtService.sign(payload, { secret: process.env.ACCESS_SECRET_KEY, expiresIn: '30s' }),
+      accessToken: await this.jwtService.sign(payload, { secret: process.env.ACCESS_SECRET_KEY, expiresIn: '1h' }),
       refreshToken: await this.jwtService.sign(payload, { secret: process.env.REFRESH_SECRET_KEY, expiresIn: '1d' }),
     };
   }
