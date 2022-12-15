@@ -1,9 +1,21 @@
 import React from 'react';
+import { Controller, useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 
 import { mainRoutes } from '../routes/index';
 
 export const MyAccount = () => {
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  console.log(errors);
+
+  const onSubmit = (data) => {
+    alert(JSON.stringify(data));
+  };
+
   return (
     <div className="container">
       <br />
@@ -24,57 +36,94 @@ export const MyAccount = () => {
       <p className="mt-3 mb-5 fs-4">
         Пошук роботи на feast анонімний. Ваші персональні дані побачать лише ті, кому ви відкриєте контакти.
       </p>
-      <form>
-        <div className="input-group">
-          <div className="col-auto me-2">
+
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="row">
+          <div className="col-md-2">
             <label className="col-form-label fw-bold">Ім&apos;я та прізвище</label>
           </div>
-          <div className="col-4 mx-5">
-            <input type="text" id="position" className="form-control" />
+          <div className="col-md-4 ml-auto">
+            <Controller
+              render={({ field }) => <input className="form-control" {...field} />}
+              name="firstAndLastName"
+              control={control}
+              defaultValue=""
+              className="form-control"
+            />
           </div>
         </div>
-        <div className="input-group mt-4">
-          <div className="col-auto me-5">
-            <label className="col-form-label fw-bold me-5">Email</label>
+        <div className="row mt-4">
+          <div className="col-md-2">
+            <label className="col-form-label fw-bold">Email</label>
           </div>
-          <div className="col-4 ms-5">
-            <input type="text" id="position" className="form-control" />
-          </div>
-        </div>
-        <div className="input-group mt-4">
-          <div className="col-auto me-5">
-            <label className="col-form-label fw-bold me-4">Телефон</label>
-          </div>
-          <div className="col-4 ms-5">
-            <input type="text" id="position" className="form-control" />
+          <div className="col-md-4 ml-auto">
+            <Controller
+              render={({ field }) => <input className="form-control" {...field} />}
+              name="email"
+              control={control}
+              defaultValue=""
+              className="form-control"
+            />{' '}
           </div>
         </div>
-        <div className="input-group mt-4">
-          <div className="col-auto me-5">
-            <label className="col-form-label fw-bold me-4">Telegram</label>
+        <div className="row mt-4">
+          <div className="col-md-2">
+            <label className="col-form-label fw-bold">Телефон</label>
           </div>
-          <div className="col-4 ms-5">
-            <input type="text" id="position" className="form-control" />
+          <div className="col-md-4 ml-auto">
+            <Controller
+              render={({ field }) => <input className="form-control" {...field} />}
+              name="phoneNumber"
+              control={control}
+              defaultValue=""
+              className="form-control"
+            />{' '}
           </div>
         </div>
-        <div className="input-group mt-4">
-          <div className="col-auto me-5">
+        <div className="row mt-4">
+          <div className="col-md-2">
+            <label className="col-form-label fw-bold">Telegram</label>
+          </div>
+          <div className="col-md-4 ml-auto">
+            <Controller
+              render={({ field }) => <input className="form-control" {...field} />}
+              name="telegram"
+              control={control}
+              defaultValue=""
+              className="form-control"
+            />{' '}
+          </div>
+        </div>
+        <div className="row mt-4">
+          <div className="col-md-2">
             <label className="col-form-label fw-bold">Портфолио</label>
           </div>
-          <div className="col-4 ms-5">
-            <input type="text" id="position" className="form-control" />
+          <div className="col-md-4 ml-auto">
+            <Controller
+              render={({ field }) => <input className="form-control" {...field} />}
+              name="portfolio"
+              control={control}
+              defaultValue=""
+              className="form-control"
+            />{' '}
           </div>
         </div>
-        <div className="input-group mt-4">
-          <div className="col-auto me-5">
+        <div className="row mt-4">
+          <div className="col-md-2">
             <label className="col-form-label fw-bold me-4">Резюме</label>
           </div>
-          <div className="col-4 ms-5">
-            <input type="text" id="position" className="form-control" />
+          <div className="col-md-4 ml-auto">
+            <Controller
+              render={({ field }) => <input className="form-control" {...field} />}
+              name="cv"
+              control={control}
+              defaultValue=""
+              className="form-control"
+            />{' '}
           </div>
         </div>
-        <div className="input-group mt-4 mb-4">
-          <div className="col-auto me-auto">
+        <div className="row mt-4">
+          <div className="col-md-6 offset-md-2">
             <button type="submit" className="btn btn-primary">
               Зберегти зміни
             </button>
